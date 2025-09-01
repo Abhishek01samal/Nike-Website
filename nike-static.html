@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKE - Premium Shoe Collection | Just Do It With Style</title>
+    <meta name="description" content="Discover Nike's premium collection of athletic shoes engineered for peak performance. From running to basketball, elevate your game with cutting-edge design.">
+    <link rel="canonical" href="https://nike-premium.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css">
+    <style>
+        /* Nike Premium Design System - All colors MUST be HSL */
+        
+        :root {
+            --background: 0 0% 4%;
+            --foreground: 0 0% 98%;
+            --card: 0 0% 10%;
+            --card-foreground: 0 0% 98%;
+            --popover: 0 0% 10%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 320 84% 45%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 232 45% 45%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 0 0% 16%;
+            --muted-foreground: 0 0% 54%;
+            --accent: 23 92% 60%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 84% 60%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 0 0% 16%;
+            --input: 0 0% 16%;
+            --ring: 320 84% 45%;
+            --radius: 1rem;
+
+            /* Custom Nike Design Tokens */
+            --gradient-primary: linear-gradient(135deg, hsl(320, 84%, 45%), hsl(266, 85%, 58%));
+            --gradient-secondary: linear-gradient(135deg, hsl(232, 45%, 45%), hsl(251, 63%, 63%));
+            --gradient-accent: linear-gradient(135deg, hsl(23, 92%, 60%), hsl(36, 95%, 55%));
+            --gradient-hero: linear-gradient(135deg, hsl(232, 45%, 45%), hsl(251, 63%, 63%));
+            
+            /* Glass Effects */
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-blur: blur(20px);
+            
+            /* Shadows */
+            --shadow-glow: 0 20px 60px rgba(199, 32, 146, 0.3);
+            --shadow-elegant: 0 8px 32px rgba(0, 0, 0, 0.3);
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass Navigation */
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Gradient Text */
+        .gradient-text-primary {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text-accent {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+
+        .hover-glow {
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-elegant);
+        }
+
+        .hover-glow:hover {
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Smooth Link Animation */
+        .link-hover {
+            position: relative;
+        }
+
+        .link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s ease;
+            background: var(--gradient-primary);
+        }
+
+        .link-hover:hover::after {
+            width: 100%;
+        }
+
+        /* Custom Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(2deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-reverse {
+            animation: floatReverse 8s ease-in-out infinite;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 1s ease-out;
+        }
+
+        .animate-bounce-custom {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-shimmer {
+            animation: shimmer 0.5s ease;
+        }
+
+        /* Background Gradients */
+        .bg-gradient-primary {
+            background: var(--gradient-primary);
+        }
+
+        .bg-gradient-secondary {
+            background: var(--gradient-secondary);
+        }
+
+        .bg-gradient-accent {
+            background: var(--gradient-accent);
+        }
+
+        .bg-gradient-hero {
+            background: var(--gradient-hero);
+        }
+
+        /* Header */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            padding: 24px 0;
+        }
+
+        nav.scrolled {
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo h1 {
+            font-size: 48px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo h1:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 40px;
+            list-style: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(31 41 55);
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: hsl(var(--primary));
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            background: transparent;
+            border: none;
+            color: rgb(31 41 55);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-icon:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-hero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+        }
+
+        .hero-bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-bg-element:nth-child(1) {
+            width: 192px;
+            height: 192px;
+            top: 40px;
+            right: 40px;
+        }
+
+        .hero-bg-element:nth-child(2) {
+            width: 128px;
+            height: 128px;
+            bottom: 80px;
+            left: 64px;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 128px 24px 64px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 64px;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero-content {
+            color: white;
+            space-y: 32px;
+        }
+
+        .hero-title {
+            font-size: clamp(80px, 8vw, 128px);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            display: block;
+            font-size: clamp(64px, 6vw, 96px);
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            max-width: 512px;
+            margin: 32px 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .btn-hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            height: 64px;
+            min-width: 200px;
+            justify-content: center;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(199, 32, 146, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            height: 56px;
+            min-width: 160px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-floating {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .hero-floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-floating-element:nth-child(1) {
+            width: 160px;
+            height: 160px;
+            top: 40px;
+            right: 40px;
+            animation: floatReverse 8s ease-in-out infinite;
+        }
+
+        .hero-floating-element:nth-child(2) {
+            width: 96px;
+            height: 96px;
+            bottom: 80px;
+            left: 60px;
+            animation: floatReverse 8s ease-in-out infinite;
+            animation-delay: -4s;
+        }
+
+        .hero-shoe {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0,0,0,0.3));
+            position: relative;
+            z-index: 10;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 128px 0;
+            background: hsl(var(--background));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 192px;
+            background: linear-gradient(180deg, #764ba2, hsl(var(--background)));
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: clamp(64px, 6vw, 96px);
+            font-weight: 900;
+            margin-bottom: 24px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: hsl(var(--muted-foreground));
+            max-width: 512px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .product-card {
+            border-radius: 24px;
+            padding: 32px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-image {
+            height: 240px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 90%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05) rotate(-3deg);
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            color: hsl(var(--muted-foreground));
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .product-price {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 24px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 48px;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(199, 32, 146, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 128px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .about-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .about-title {
+            font-size: clamp(56px, 5vw, 80px);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 32px;
+            line-height: 1.2;
+        }
+
+        .about-text {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            display: block;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 500px;
+        }
+
+        .visual-card {
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-card:nth-child(1) {
+            margin-top: 40px;
+        }
+
+        .visual-card:nth-child(2) {
+            margin-bottom: 40px;
+        }
+
+        .visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: hsl(var(--background));
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .footer-section a {
+            color: hsl(var(--muted-foreground));
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: hsl(var(--primary));
+        }
+
+        .footer-bottom {
+            border-top: 1px solid hsl(var(--border));
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: hsl(var(--muted-foreground));
+            font-size: 24px;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: hsl(var(--primary));
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Utility Classes */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h1 class="gradient-text-primary">NIKE</h1>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#hero" class="link-hover">Home</a></li>
+                <li><a href="#products" class="link-hover">Products</a></li>
+                <li><a href="#about" class="link-hover">About</a></li>
+                <li><a href="#contact" class="link-hover">Contact</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <button class="nav-icon" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="nav-icon" aria-label="Favorites">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+                <button class="nav-icon" aria-label="Shopping Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+                        <path d="M20 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg animate-float-reverse">
+            <div class="hero-bg-element"></div>
+            <div class="hero-bg-element"></div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content animate-slide-up">
+                <h1 class="hero-title">
+                    JUST DO IT
+                    <span class="hero-subtitle gradient-text-accent">WITH STYLE</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Discover our premium collection of Nike shoes engineered for peak performance. 
+                    From the streets to the track, elevate your game with cutting-edge design and 
+                    unmatched comfort.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="btn-hero" onclick="scrollToProducts()">
+                        Shop Collection 
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"></path>
+                            <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <button class="btn-outline">
+                        Watch Video
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-floating">
+                    <div class="hero-floating-element"></div>
+                    <div class="hero-floating-element"></div>
+                </div>
+                
+                <img 
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'%3E%3Cdefs%3E%3ClinearGradient id='shoe-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23c72092'/%3E%3Cstop offset='100%25' stop-color='%236c14d0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 200c20-30 80-50 150-50s130 20 150 50c20 30-20 60-50 80-30 20-100 20-150 20s-120 0-150-20c-30-20-70-50-50-80z' fill='url(%23shoe-gradient)'/%3E%3Cellipse cx='300' cy='260' rx='120' ry='30' fill='white' opacity='0.2'/%3E%3Cpath d='M200 180c30-15 60-20 100-20s70 5 100 20c-30 15-60 20-100 20s-70-5-100-20z' fill='white' opacity='0.3'/%3E%3Cpath d='M250 160c20-5 30-8 50-8s30 3 50 8c-20 5-30 8-50 8s-30-3-50-8z' fill='white' opacity='0.6'/%3E%3C/svg%3E" 
+                    alt="Nike Air Max Premium" 
+                    class="hero-shoe animate-float"
+                    width="600"
+                    height="400"
+                />
+            </div>
+        </div>
+
+        <div class="scroll-indicator animate-bounce-custom">
+            <span>Scroll to explore</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="products-bg"></div>
+        
+        <div class="products-container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text-primary">Featured Collection</h2>
+                <p class="section-subtitle">
+                    Handpicked shoes that represent the perfect blend of innovation, style, and performance
+                </p>
+            </div>
+
+            <div class="products-grid">
+                <article class="product-card glass-card hover-lift hover-glow">
+                    <div class="product-image bg-gradient-secondary">
+                        <img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cdefs%3E%3ClinearGradient id='jordan-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff1744'/%3E%3Cstop offset='100%25' stop-color='%23d50000'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 120c30-20 70-30 100-30s70 10 100 30c-30 20-70 30-100 30s-70-10-100-30z' fill='url(%23jordan-gradient)'/%3E%3Cpath d='M80 100c20-10 40-15 70-15s50 5 70 15c-20 10-40 15-70 15s-50-5-70-15z' fill='white' opacity='0.8'/%3E%3Cellipse cx='150' cy='140' rx='60' ry='15' fill='white' opacity='0.3'/%3E%3Cpath d='M120 90c10-3 20-5 30-5s20 2 30 5c-10 3-20 5-30 5s-20-2-30-5z' fill='%23333'/%3E%3C/svg%3E"
+                            alt="Air Jordan 1 Retro"
+                            width="300"
+                            height="200"
+                        />
+                    </div>
+
+                    <div>
+                        <h3 class="product-name">Air Jordan 1 Retro</h3>
+                        <p class="product-description">Classic basketball shoe with premium leather construction</p>
+                        <div class="product-price gradient-text-primary">₹12,995</div>
+                        <button class="add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card glass-card hover-lift hover-glow">
+                    <div class="product-image bg-gradient-secondary">
+                        <img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cdefs%3E%3ClinearGradient id='airmax-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23667eea'/%3E%3Cstop offset='100%25' stop-color='%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 120c30-20 70-30 100-30s70 10 100 30c-30 20-70 30-100 30s-70-10-100-30z' fill='url(%23airmax-gradient)'/%3E%3Cpath d='M80 100c20-10 40-15 70-15s50 5 70 15c-20 10-40 15-70 15s-50-5-70-15z' fill='white' opacity='0.9'/%3E%3Cellipse cx='150' cy='140' rx='60' ry='15' fill='white' opacity='0.2'/%3E%3Ccircle cx='200' cy='130' r='8' fill='%23ff6b35' opacity='0.8'/%3E%3C/svg%3E"
+                            alt="Air Max 270 React"
+                            width="300"
+                            height="200"
+                        />
+                    </div>
+
+                    <div>
+                        <h3 class="product-name">Air Max 270 React</h3>
+                        <p class="product-description">Next-generation cushioning meets modern design</p>
+                        <div class="product-price gradient-text-primary">₹13,995</div>
+                        <button class="add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card glass-card hover-lift hover-glow">
+                    <div class="product-image bg-gradient-secondary">
+                        <img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cdefs%3E%3ClinearGradient id='pegasus-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300e676'/%3E%3Cstop offset='100%25' stop-color='%2300c853'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 120c30-20 70-30 100-30s70 10 100 30c-30 20-70 30-100 30s-70-10-100-30z' fill='url(%23pegasus-gradient)'/%3E%3Cpath d='M80 100c20-10 40-15 70-15s50 5 70 15c-20 10-40 15-70 15s-50-5-70-15z' fill='white' opacity='0.9'/%3E%3Cellipse cx='150' cy='140' rx='60' ry='15' fill='white' opacity='0.2'/%3E%3Cpath d='M100 110l20-5 20 5-20 5z' fill='%23333' opacity='0.7'/%3E%3C/svg%3E"
+                            alt="Zoom Pegasus 39"
+                            width="300"
+                            height="200"
+                        />
+                    </div>
+
+                    <div>
+                        <h3 class="product-name">Zoom Pegasus 39</h3>
+                        <p class="product-description">Responsive running shoe for every mile</p>
+                        <div class="product-price gradient-text-primary">₹10,995</div>
+                        <button class="add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card glass-card hover-lift hover-glow">
+                    <div class="product-image bg-gradient-secondary">
+                        <img
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'%3E%3Cdefs%3E%3ClinearGradient id='blazer-gradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23ff9800'/%3E%3Cstop offset='100%25' stop-color='%23f57c00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M50 120c30-20 70-30 100-30s70 10 100 30c-30 20-70 30-100 30s-70-10-100-30z' fill='url(%23blazer-gradient)'/%3E%3Cpath d='M80 100c20-10 40-15 70-15s50 5 70 15c-20 10-40 15-70 15s-50-5-70-15z' fill='%23333' opacity='0.8'/%3E%3Cellipse cx='150' cy='140' rx='60' ry='15' fill='white' opacity='0.2'/%3E%3Cpath d='M130 95c5-2 10-3 20-3s15 1 20 3c-5 2-10 3-20 3s-15-1-20-3z' fill='white' opacity='0.9'/%3E%3C/svg%3E"
+                            alt="Blazer Mid '77"
+                            width="300"
+                            height="200"
+                        />
+                    </div>
+
+                    <div>
+                        <h3 class="product-name">Blazer Mid '77</h3>
+                        <p class="product-description">Vintage basketball style meets modern comfort</p>
+                        <div class="product-price gradient-text-primary">₹7,995</div>
+                        <button class="add-to-cart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div>
+                <h2 class="about-title">Innovation Meets Performance</h2>
+                
+                <div>
+                    <p class="about-text">
+                        For over five decades, Nike has been at the forefront of athletic innovation, 
+                        creating shoes that don't just look good—they perform at the highest level.
+                    </p>
+                    <p class="about-text">
+                        Our commitment to excellence drives us to push boundaries, explore new 
+                        technologies, and create footwear that empowers athletes of all levels 
+                        to achieve their dreams.
+                    </p>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number gradient-text-primary">50M+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number gradient-text-primary">1000+</span>
+                        <span class="stat-label">Shoe Models</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number gradient-text-primary">50+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-visual">
+                <div class="visual-card bg-gradient-secondary">
+                    <div class="visual-overlay"></div>
+                </div>
+                <div class="visual-card bg-gradient-primary">
+                    <div class="visual-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3 class="gradient-text-primary">Products</h3>
+                    <a href="#">Air Max</a>
+                    <a href="#">Air Jordan</a>
+                    <a href="#">Blazer</a>
+                    <a href="#">Pegasus</a>
+                    <a href="#">React</a>
+                    <a href="#">Zoom</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="gradient-text-primary">Sports</h3>
+                    <a href="#">Running</a>
+                    <a href="#">Basketball</a>
+                    <a href="#">Football</a>
+                    <a href="#">Training</a>
+                    <a href="#">Skateboarding</a>
+                    <a href="#">Golf</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="gradient-text-primary">Support</h3>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Shipping</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Store Locator</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="gradient-text-primary">Company</h3>
+                    <a href="#">About Nike</a>
+                    <a href="#">Careers</a>
+                    <a href="#">News</a>
+                    <a href="#">Investors</a>
+                    <a href="#">Sustainability</a>
+                    <a href="#">Purpose</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Nike, Inc. All Rights Reserved</p>
+                
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="m16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                            <path d="m10 15 5-3-5-3z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling navigation
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                // Simple animation feedback
+                this.style.transform = 'scale(0.95)';
+                this.textContent = 'Added!';
+                
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                    this.textContent = 'Add to Cart';
+                }, 1000);
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe product cards for scroll animations
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nike Premium Collection",
+        "url": "https://nike-premium.com",
+        "description": "Discover Nike's premium collection of athletic shoes engineered for peak performance",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://nike-premium.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</body>
+</html>
