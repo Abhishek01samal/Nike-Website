@@ -97,27 +97,6 @@ npm install
 
 ### 4. Start the development server
 
-```bash
-npm run dev
-```
-
-The application will be available at the local URL provided by Vite, usually:
-
-```text
-http://localhost:5173
-```
-
-### 5. Build for production
-
-```bash
-npm run build
-```
-
-### 6. Preview the production build
-
-```bash
-npm run preview
-```
 
 ## Design Approach
 
