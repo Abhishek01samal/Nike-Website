@@ -12,17 +12,7 @@ The goal of this project is to recreate a premium sportswear shopping experience
 
 ## Features
 
-* Modern Nike-inspired user interface
-* Responsive design for different screen sizes
-* Product-focused landing page
-* Clean and reusable React components
-* TypeScript-based development
-* Tailwind CSS styling
-* Vite-powered development environment
-* Modern navigation and page layouts
-* Product presentation sections
-* Interactive frontend experience
-* Optimized project structure for scalability
+
 
 ## Tech Stack
 
